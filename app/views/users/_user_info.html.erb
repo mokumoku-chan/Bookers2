@@ -1,0 +1,23 @@
+<h2>User info</h2>
+
+<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+  </tr>
+
+  <tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+  </tr>
+</table>
+
+<% if user.id == current_user.id %>
+  <P><%= link_to "Update", edit_user_path(current_user.id) %></P>
+
+<% else %>
+  <%= link_to "update", user_path(current_user.id) %>
+
+<% end %>
