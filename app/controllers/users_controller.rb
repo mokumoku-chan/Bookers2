@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
 
   def ensure_current_user
-    if @current_user.id != params[:id].to_i
-      redirect_to book_path(@current_user.id)
+    if current_user.id != params[:id].to_i
+      redirect_to book_path(current_user.id)
     end
   end
 
@@ -29,8 +29,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   private
