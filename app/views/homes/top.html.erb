@@ -1,28 +1,41 @@
+
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value, class: "#{key}") %>
 <% end %>
 
-<h1>
-  welcome to
-  <i class="fas fa-book"></i>
-  <strong>Bookers</strong>!!
-</h1>
+
+<div class = "container my-5">
+  <div class = "row">
+    <div class = "mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <h1>
+        welcome to
+        <i class="fas fa-book"></i>
+        <strong>Bookers</strong>!!
+      </h1>
 
 
 
-<P>
-  In
-  <i class="fas fa-book"></i>
-  <strong>Bookers</strong>,
-</P>
+      <P>
+        In
+        <i class="fas fa-book"></i>
+        <strong>Bookers</strong>,
+      </P>
 
 
-<P>
-  you can share and exchange your opinions , inpressions , and emotions <br>
-  about various books!
-</P>
+      <P>you can share and exchange your opinions , inpressions , and emotions</P>
+      <p>about various books!</p>
 
 
-<div><%= link_to "Log in", new_user_session_path %></div>
 
-<div><%= link_to "Sign up", new_user_registration_path %></div>
+      <div class = "col-10 mx-auto">
+        <div class = "row">
+          <a class = "btn btn-info btn-block mb-3" role = "button" href = "/users/sign_in">Log in</a>
+        </div>
+
+        <div class = "row">
+          <a class = "btn btn-success btn-block" href = "/user/sign_up">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
