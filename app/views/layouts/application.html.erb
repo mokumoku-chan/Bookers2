@@ -4,49 +4,83 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/e2c2aeffb7.js" crossorigin="anonymous"></script>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+
+    <h4>Bookers</h4>
+
+    <nav class = "navbar navbar-expand-lg navbar-light">
+
+      <% if user_signed_in? %>
+
+        <ul class = "list-style">
+          <li>
+            <%= link_to user_path(current_user.id) do %>
+              <i class="fas fa-home"></i>Home
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to users_path do %>
+              <i class="fas fa-users"></i> Users
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to books_path do %>
+              <i class="fas fa-book-open"></i> Books
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> Log out
+            <% end %>
+          </li>
+        </ul>
+
+      <% else %>
+        <ul class = list-style>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to homes_about_path do %>
+            <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus"></i> Sign up
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i> Log in
+            <% end %>
+          </li>
+        </ul>
+
+      <% end %>
+    </nav>
+
   </head>
 
   <body>
-
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Home", user_path(current_user.id) %>
-      </li>
-
-      <li>
-        <%= link_to "User", users_path %>
-      </li>
-
-      <li>
-        <%= link_to "Books", books_path %>
-      </li>
-
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-
-    <% else %>
-      <li>
-        <%= link_to "Home", root_path %>
-      </li>
-
-      <li>
-        <%= link_to "About", homes_about_path %>
-      </li>
-
-      <li>
-        <%= link_to "Sign_up", new_user_registration_path %>
-      </li>
-
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-
-    <% end %>
-
     <%= yield %>
   </body>
+
+  <footer>
+    <p>CopyRigth Infratop.inc</p>
+  </footer>
 </html>
