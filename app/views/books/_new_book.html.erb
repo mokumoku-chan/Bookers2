@@ -41,8 +41,11 @@
 
 
 <% else %>
-  <%= link_to "update", user_path(current_user.id) %>
-
+  <div class = "row my-4">
+    <%= link_to "update", user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
 <% end %>
 
 
