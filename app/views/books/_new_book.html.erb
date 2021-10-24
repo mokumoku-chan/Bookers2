@@ -20,7 +20,7 @@
 
 <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
 
-<table>
+<table class = "table">
   <tr>
     <th>name</th>
     <th><%= user.name %></th>
@@ -33,11 +33,12 @@
 </table>
 
 <% if user.id == current_user.id %>
-  <div class = "row">
-    <%= link_to edit_user_path(current_user.id) do %>
+  <div class = "row my-4">
+    <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
         <i class="fas fa-user-cog"></i>
+    <% end %>
   </div>
-  <% end %>
+
 
 <% else %>
   <%= link_to "update", user_path(current_user.id) %>
@@ -50,14 +51,16 @@
 <h2 class = "my-3">New book</h2>
 
 <%= form_with model: book, local: true do |f| %>
-  <div class = "mb-3">
+
+  <div class = "form-group mb-3">
     <h4>Title</h4>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "w-100" %>
   </div>
 
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-
+  <div class = "form-group">
+    <h4>Opinion</h4>
+    <%= f.text_area :body , class: "w-100" %>
+  </div>
 
   <%= f.submit 'Create Book',class:"btn btn-success my-3" %>
 
